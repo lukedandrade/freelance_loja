@@ -36,6 +36,7 @@ class Produto(db.Model):
     prod_unit_scale = db.Column(db.String(32))
     prod_value = db.Column(db.Float)
     prod_reserve = db.Column(db.Integer)
+    prod_type = db.Column(db.String(16))
 
 class Pedido(db.Model):
     __tablename__ = 'requests'

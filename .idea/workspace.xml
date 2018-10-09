@@ -15,7 +15,8 @@
           <entry key="project.closed" value="2" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.25" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -30,41 +31,45 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1705" />
+          <entry key="py" value="2658" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1705" />
+          <entry key="Python" value="2658" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="83" selection-start-line="2" selection-start-column="83" selection-end-line="2" selection-end-column="83" />
+            <state relative-caret-position="391">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+                <marker date="1539111928149" expanded="true" signature="290:295" ph="..." />
+                <marker date="1539111928149" expanded="true" signature="561:562" ph="..." />
+                <marker date="1539111928149" expanded="true" signature="1344:1349" ph="..." />
+                <marker date="1539111928149" expanded="true" signature="2074:2079" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            <state relative-caret-position="289">
+              <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
-                <marker date="1539107332678" expanded="true" signature="239:240" ph="..." />
-                <marker date="1539107332678" expanded="true" signature="853:854" ph="..." />
-                <marker date="1539107332678" expanded="true" signature="1024:1025" ph="..." />
-                <marker date="1539107332678" expanded="true" signature="1375:1376" ph="..." />
+                <marker date="1539109154288" expanded="true" signature="239:240" ph="..." />
+                <marker date="1539109154288" expanded="true" signature="853:854" ph="..." />
+                <marker date="1539109154288" expanded="true" signature="1024:1025" ph="..." />
+                <marker date="1539109154288" expanded="true" signature="1416:1417" ph="..." />
               </folding>
             </state>
           </provider>
@@ -104,24 +109,26 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/forms.py" />
         <option value="$PROJECT_DIR$/venv/configurations.py" />
         <option value="$PROJECT_DIR$/configurations.py" />
         <option value="$PROJECT_DIR$/flask_app.py" />
         <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/forms.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="950" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="952" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,7 +140,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -166,8 +172,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983476" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.5080645" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -191,16 +198,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/configurations.py" />
-    <entry file="file://$PROJECT_DIR$/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="83" selection-start-line="2" selection-start-column="83" selection-end-line="2" selection-end-column="83" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/configurations.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -221,14 +218,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        <state relative-caret-position="289">
+          <caret line="38" column="40" lean-forward="true" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
-            <marker date="1539107332678" expanded="true" signature="239:240" ph="..." />
-            <marker date="1539107332678" expanded="true" signature="853:854" ph="..." />
-            <marker date="1539107332678" expanded="true" signature="1024:1025" ph="..." />
-            <marker date="1539107332678" expanded="true" signature="1375:1376" ph="..." />
+            <marker date="1539109154288" expanded="true" signature="239:240" ph="..." />
+            <marker date="1539109154288" expanded="true" signature="853:854" ph="..." />
+            <marker date="1539109154288" expanded="true" signature="1024:1025" ph="..." />
+            <marker date="1539109154288" expanded="true" signature="1416:1417" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1539111928149" expanded="true" signature="290:295" ph="..." />
+            <marker date="1539111928149" expanded="true" signature="561:562" ph="..." />
+            <marker date="1539111928149" expanded="true" signature="1344:1349" ph="..." />
+            <marker date="1539111928149" expanded="true" signature="2074:2079" ph="..." />
           </folding>
         </state>
       </provider>
