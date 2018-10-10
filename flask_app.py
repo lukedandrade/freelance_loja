@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
@@ -17,9 +17,14 @@ login_manager.login_view = 'login'
 
 btrp = Bootstrap(app)
 
-import models
+from forms import EnterForm
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
-    return "Hello Beeeeetch"
+    form = EnterForm()
+    if form.validate_on_submit():
+        print(type(form.prod_type_testq.data))
+        return '{}'.format(form.prod_type_testq.data)
+
+    return render_template("test.html", form=form)

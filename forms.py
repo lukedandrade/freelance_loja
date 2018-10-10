@@ -1,16 +1,21 @@
 from flask_wtf import FlaskForm as FF
 from wtforms import StringField, BooleanField, PasswordField, SubmitField, IntegerField, TextAreaField, SelectField
 from wtforms import FloatField
+from wtforms_alchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Length, EqualTo, Optional, NumberRange
+from models import Produto
+
+def Prodquery():
+    return Produto.query
 
 class LoginForm(FF):
-    username = StringField('username', validators=[DataRequired(), Length(16)])
+    username = StringField('username', validators=[DataRequired(), Length(max=16)])
     password = PasswordField('password', validators=[DataRequired()])
     remember_me = BooleanField('remember_me', default=False)
     submit = SubmitField('Log in')
 
 class RegisterForm(FF):
-    username = StringField('username', validators=[DataRequired(), Length(16)])
+    username = StringField('username', validators=[DataRequired(), Length(max=16)])
     password = PasswordField('password', validators=[DataRequired()])
     c_password = PasswordField('confirm password', validators=[DataRequired()])
     loja_associada = SelectField('loja', validators=[DataRequired()], choices=[('salvo', 'Loja n X')])
@@ -22,7 +27,7 @@ class RegisterForm(FF):
     submit = SubmitField('Register new account')
 
 class EnterForm(FF):
-    product_name = StringField('p_name', validators=[DataRequired(), Length(64)])
+    product_name = StringField('p_name', validators=[DataRequired(), Length(max=64)])
     product_unit = SelectField('p_unit_type', validators=[DataRequired()], choices=[('Caixa', 'Caixa')
                                                                                     ]
                                )
@@ -30,6 +35,7 @@ class EnterForm(FF):
     product_type = SelectField('p_type', validators=[DataRequired()], choices=[('Bebida', 'Bebida')
                                                                                ]
                                )
+    prod_type_testq = QuerySelectField('p_test', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
     product_stock = IntegerField('p_stock', validators=[DataRequired()])
     submit = SubmitField('Insert new product')
 
