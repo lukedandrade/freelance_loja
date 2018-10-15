@@ -3,10 +3,13 @@ from wtforms import StringField, BooleanField, PasswordField, SubmitField, Integ
 from wtforms import FloatField
 from wtforms_alchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Length, EqualTo, Optional, NumberRange
-from models import Produto
+from models import Produto, Loja
 
 def Prodquery():
     return Produto.query
+
+def Lojaquery():
+    return Loja.query
 
 class LoginForm(FF):
     username = StringField('username', validators=[DataRequired(), Length(max=16)])
@@ -18,7 +21,8 @@ class RegisterForm(FF):
     username = StringField('username', validators=[DataRequired(), Length(max=16)])
     password = PasswordField('password', validators=[DataRequired()])
     c_password = PasswordField('confirm password', validators=[DataRequired()])
-    loja_associada = SelectField('loja', validators=[DataRequired()], choices=[('salvo', 'Loja n X')])
+    loja_associada = QuerySelectField('loja', validators=[DataRequired()], query_factory=Lojaquery, allow_blank=False,
+                                      get_label='store_name')
     tipo = SelectField('permissions', validators=[DataRequired()], choices=[(0, 'Admin'),
                                                                             (1, 'Funcionário'),
                                                                             (2, 'Matriz')
@@ -32,20 +36,14 @@ class EnterForm(FF):
                                                                                     ]
                                )
     product_price = FloatField('p_price', validators=[DataRequired()])
-    product_type = SelectField('p_type', validators=[DataRequired()], choices=[('Bebida', 'Bebida')
-                                                                               ]
-                               )
-    prod_type_testq = QuerySelectField('p_test', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
+
+    product_type = QuerySelectField('p_type', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
     product_stock = IntegerField('p_stock', validators=[DataRequired()])
     submit = SubmitField('Insert new product')
 
 class EditForm(FF):
-    product_type = SelectField('p_type', validators=[DataRequired()], choices=[('Bebida', 'Bebida')
-                                                                               ]
-                               )
+    product_type = QuerySelectField('p_type', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
     product_price = FloatField('p_price')
-    product_unit = SelectField('p_unit_type', validators=[DataRequired()], choices=[('Caixa', 'Caixa')
-                                                                                    ]
-                               )
+    product_unit = QuerySelectField('p_unit_type', validators=[DataRequired()], query_factory=Prodquery, allow_blank=False, get_label='prod_unit_scale')
     product_stock = IntegerField('p_stock')
     submit = SubmitField('Save changes')
