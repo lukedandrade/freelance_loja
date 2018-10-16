@@ -36,7 +36,7 @@ class EnterForm(FF):
                                                                                     ]
                                )
     product_price = FloatField('p_price', validators=[DataRequired()])
-
+    prod_id = IntegerField('p_id', validators=[DataRequired()])
     product_type = QuerySelectField('p_type', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
     product_stock = IntegerField('p_stock', validators=[DataRequired()])
     submit = SubmitField('Insert new product')

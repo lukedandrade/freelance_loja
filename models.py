@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     permissions = db.Column(db.Integer)
     username = db.Column(db.String(16), index=True, unique=True)
-    password_hash = db.Column(db.String(128))
+    password_hash= db.Column(db.String(128))
     id_loja = db.Column(db.Integer, db.ForeignKey('stores.id'))
 
     @property
