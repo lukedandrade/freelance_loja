@@ -42,8 +42,16 @@ class EnterForm(FF):
     submit = SubmitField('Insert new product')
 
 class EditForm(FF):
+    product_name = StringField('p_name', validators=[DataRequired(), Length(max=64)])
     product_type = QuerySelectField('p_type', query_factory=Prodquery, allow_blank=False, get_label='prod_type')
     product_price = FloatField('p_price')
     product_unit = QuerySelectField('p_unit_type', validators=[DataRequired()], query_factory=Prodquery, allow_blank=False, get_label='prod_unit_scale')
     product_stock = IntegerField('p_stock')
     submit = SubmitField('Save changes')
+
+
+#primeira tentativa do form de pedidos
+class PedidoForm(FF):
+    product_name = StringField('p_name', validators=[DataRequired(), Length(max=64)])
+    units = IntegerField('p_units', validators=[DataRequired()])
+    submit = SubmitField('Fazer pedido')

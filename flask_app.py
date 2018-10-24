@@ -17,8 +17,9 @@ login_manager.login_view = 'login'
 
 btrp = Bootstrap(app)
 
-from forms import EnterForm, LoginForm, RegisterForm, EditForm
-from models import User, Produto
+from forms import EnterForm, LoginForm, RegisterForm, EditForm, PedidoForm
+from models import User, Produto, Pedido, Loja
+from datetime import datetime
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -100,6 +101,7 @@ def register_product():
 def edit_product(id):
     old_prod = Produto.query.filter_by(id=id).first_or_404()
     edit_form = EditForm()
+    edit_form.product_name.render_kw = {'placeholder' : old_prod.prod_name}
     edit_form.product_price.render_kw = {'placeholder' : old_prod.prod_value}
     edit_form.product_stock.render_kw = {'placeholder' : old_prod.prod_reserve}
 
@@ -119,3 +121,37 @@ def edit_product(id):
             return redirect(url_for(('index')))
 
     return render_template('prod_edit.html', form=edit_form)
+
+#rota para demostracao de todos os produtos, idealmente, cada produto sera mostrado junto com um link direto
+#para sua edicao
+@app.route('/all_products', methods=['GET', 'POST'])
+@login_required
+def all_products():
+    page = request.args.get('page', 1, type=int)
+    pagination = Produto.query.order_by(Produto.prod_type).paginate(page, error_out=True)
+    produtos = pagination.items
+    return render_template('all_products.html',
+                           produtos=produtos,
+                           pagination=pagination)
+
+#rota para form dos pedidos
+@app.route('/pedido', methods=['GET', 'POST'])
+@login_required
+def pedido():
+    pedidoform = PedidoForm()
+
+    if pedidoform.validate_on_submit():
+        #salvar o pedido em formato de texto
+        loja_atual = Loja.query.filter_by(id=current_user.id_loja).first_or_404()
+        text = "Loja: %s, pedido de %s, %s unidades" %(loja_atual.store_name,
+                                                       pedidoform.product_name,
+                                                       pedidoform.units)
+        new_pedido = Pedido(date=datetime.utcnow(),
+                            request=text,
+                            situation=0)
+        db.session.add(new_pedido)
+        db.commit()
+        flash("Novo pedido registrado")
+        return redirect(url_for('index'))
+    return render_template('pedido.html',
+                           form = pedidoform)
