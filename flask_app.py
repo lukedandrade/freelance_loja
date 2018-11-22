@@ -3,6 +3,8 @@ from flask_login import LoginManager, login_user, logout_user, current_user, log
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from flask_migrate import Migrate
+from flask_mail import Mail, Message
+
 
 app = Flask(__name__)
 app.config.from_object('configurations')
@@ -17,10 +19,19 @@ login_manager.login_view = 'login'
 
 btrp = Bootstrap(app)
 
-from forms import EnterForm, LoginForm, RegisterForm, EditForm, PedidoForm
+mail = Mail(app)
+
+from forms import EnterForm, LoginForm, RegisterForm, EditForm, PedidoForm, MessageForm
 from models import User, Produto, Pedido, Loja
 from datetime import datetime
 
+
+def send_sync_mail(to, subject, text_body, html_body):
+    msg = Message('[DA_teste]' + subject,
+                  sender='placeholder', recipients=[to])
+    msg.body = text_body
+    msg.html = html_body
+    mail.send(msg)
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -45,13 +56,11 @@ def login():
         flash('Username ou senha inválida')
     return render_template('login_pg.html', form=login_form)
 
-
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_user():
@@ -155,3 +164,30 @@ def pedido():
         return redirect(url_for('index'))
     return render_template('pedido.html',
                            form = pedidoform)
+
+@app.route('/contact_us', methods=['GET', 'POST'])
+@login_required
+def contact_us():
+    message_form = MessageForm()
+    message_form.textao.render_kw = {'placeholder': 'Digite sua mensagem aqui'}
+    if message_form.validate_on_submit():
+        try:
+            loja = Loja.query.filter_by(id=current_user.id_loja).first_or_404()
+            today = datetime.utcnow()
+            send_sync_mail('example@gmail.com', 'Report de erro',
+                           render_template('pass_email.txt', user=current_user,
+                                           loja=loja, day=today.day, month=today.month,
+                                           year=today.year),
+                           render_template('pass_email.html', user=current_user,
+                                           loja=loja, day=today.day, month=today.month,
+                                           year=today.year)
+                           )
+            flash("Aviso de erro realizado.")
+            return redirect(url_for('contact_us'))
+        except:
+            flash("Aviso de erro não realizado, bug.")
+            return redirect(url_for('contact_us'))
+    else:
+        flash("Erro no formulário enviado.")
+        return redirect(url_for('contact_us'))
+    return render_template('contact.html', form=message_form)

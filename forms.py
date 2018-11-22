@@ -55,3 +55,8 @@ class PedidoForm(FF):
     product_name = StringField('p_name', validators=[DataRequired(), Length(max=64)])
     units = IntegerField('p_units', validators=[DataRequired()])
     submit = SubmitField('Fazer pedido')
+
+#formulario de texto para contato
+class MessageForm(FF):
+    textao = TextAreaField('p_text')
+    submit = SubmitField('Enviar mensagem')

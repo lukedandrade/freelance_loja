@@ -1,0 +1,5 @@
+Report de bug do usuário {{user.username}}, da loja {{loja.store_name}}.
+
+{{text}}
+
+Enviado em: {{day}}/{{month}}/{{year}}. Horário global
