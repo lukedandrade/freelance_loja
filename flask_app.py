@@ -41,7 +41,7 @@ def index():
         print(type(form.prod_type_testq.data))
         return '{}'.format(form.prod_type_testq.data)
 
-    return render_template("test.html", form=form)
+    return render_template("pedido.html", form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
