@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html>
-	{% extends "base.html" %}
-	{% import "bootstrap/wtf.html" as wtf %}
-	{% block page_content %}
-	<div class="boxform">
-		<form action="" method="POST">
-			<input type="text" name="nome" placeholder="Your Name Here"><br>
-			<input type="text" name="email" placeholder="Your E-mail Here"><br>
-			<select name="loja">
-				<!-- lojas aqui -->
-			</select>
-			<textarea name="pedido" rows="8"></textarea><br>
-			<button type="submit" class="formbtn" value="Submit">Submit</button>
+<!-- import from base -->
+	<div>
+		<form action="" method="POST" novalidate>
+			<p>
+				{{form.username(class_='form_p', placeholder='Nome do Funcionário')}}
+			</p>
+			<p>
+				{{form.loja(<!-- tem que ver como fica os parâmetros pra essa parte pra eu criar a classe no CSS -->)}}
+			</p>
+			<p>
+				{{form.request(class_='form_text', rows="8")}}
+			</p>
 		</form>
 	</div>
-	{% endblock %}
 </html>
 
-<!--
-	{{ }} representa variaveis e funcões em geral, relacionadas com o flask
-	{% %} representa imports e extensões, além de definições de bloco
-	Regra geral, se tem {}, provavelmente é do flask.
+<!-- 
+	class PostForm(Form):
+    username = StringField(u'username', validators=[DataRequired()])
+    loja = SelectField
+    request = StringField(u'Text', widget=TextArea())
+    Dê uma olhada em https://wtforms.readthedocs.io/en/stable/fields.html#basic-fields pra ver como fica no backend
+
+    modifique este backend pra o form como precisar
+-->
+
+<!-- 
+	<input type="text" name="nome" placeholder="Your Name Here"><br>
+	<input type="text" name="email" placeholder="Your E-mail Here"><br>
+	<select name="loja">
+		lojas aqui
+	</select>
+	<textarea name="pedido" rows="8"></textarea><br>
+	<button type="submit" class="formbtn" value="Submit">Submit</button>
 -->
